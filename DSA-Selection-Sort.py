@@ -20,6 +20,6 @@ for i in range(n):
     my_array[i], my_array[min_i] = my_array[min_i], my_array[i]
 
 # Print the sorted array
-print(my_array)
+print('sorted array', my_array)
 
-
+# sorted array [2, 3, 5, 7, 9, 11, 12]

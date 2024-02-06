@@ -25,6 +25,8 @@ for i in range(n-1):
 # Print the sorted array
 print("Sorted array:", my_array)
 
+# Sorted array: [2, 3, 5, 7, 9, 11, 12]
+
 
 
 
