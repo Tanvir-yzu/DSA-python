@@ -11,3 +11,7 @@ for i in my_array:
         minVal = i
         # Print the new minimum value
         print('Lowest value : ', minVal)
+        
+        
+        
+        

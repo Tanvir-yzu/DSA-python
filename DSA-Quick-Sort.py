@@ -41,3 +41,6 @@ my_array = [64, 34, 25, 12, 22, 11, 90, 5]
 quick_sort(my_array)
 print("Sorted array is:", my_array)
 #   Sorted array is: [5, 11, 12, 22, 25, 34, 64, 90]
+
+
+
