@@ -23,6 +23,7 @@ def countingSort(arr):
     # Return the sorted array
     return arr
 
+
 # Initialize an unsorted array
 unsortedArr = [4, 2, 2, 6, 3, 3, 1, 6, 5, 2, 3]
 
