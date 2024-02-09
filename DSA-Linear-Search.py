@@ -11,6 +11,8 @@ def linearSearch(arr, target):
     # If the target value is not found in the array, return -1
     return -1
 
+
+
 # Define the array and target value to search for
 arr = [3, 2, 9, 5]
 targetVal = 9
@@ -23,3 +25,6 @@ if result != -1:
     print("Value",targetVal,"found at index",result)
 else:
     print("Value",targetVal,"not found")
+    
+    
+    
