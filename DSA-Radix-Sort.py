@@ -1,36 +1,44 @@
-# Initialize an array called 'myArray' with some integer values
-myArray = [170, 45, 75, 90, 802, 24, 2, 66]
+def countingSort(arr, exp1):
+    n = len(arr)  # Get the length of the array
+    output = [0] * n  # Initialize output array of the same length
+    count = [0] * 10  # Initialize count array for digits 0-9
 
-# Initialize buckets for each digit0-9) store the elements of 'myArray'
-#during the sorting process
-radixArray = [[] for _ in range(10)]
+    # Store count of occurrences in count[]
+    for i in range(n):
+        index = arr[i] // exp1
+        count[index % 10] += 1
 
-# Find the maximum value in 'myArray' and store it in 'maxVal'
-maxVal = max(myArray)
+    # Change count[i] so it contains the actual position of this digit in output[]
+    for i in range(1, 10):
+        count[i] += count[i - 1]
 
-# Initialize 'exp' to 1
-exp = 1
+    # Build the output array
+    i = n - 1
+    while i >= 0:
+        index = arr[i] // exp1
+        output[count[index % 10] - 1] = arr[i]
+        count[index % 10] -= 1
+        i -= 1
 
-# Continue the following process while 'maxVal' divided by 'exp' is greater than 0
-while maxVal // exp > 0:
-   
-   # Distribute elements of 'myArray' into the 'radixArray' buckets based on their digit at 'exp' position
-   for val in myArray:
-       radixIndex = (val // exp) % 10
-       radixArray[radixIndex].append(val)
-
-   # Collect elements from 'radixArray' buckets and update 'myArray' with the sorted elements
-   myArray = [val for bucket in radixArray for val in bucket]
-
-   # Clear 'radixArray' buckets for the next iteration
-   radixArray = [[] for _ in range(10)]
-
-   # Multiply 'exp' by 10 to move to the next digit position for the next iteration
-   exp *= 10
-
-# Print the sorted array
-print("Sorted array:", myArray)
+    # Copy the output array to arr[], so that arr[] now contains sorted numbers
+    for i in range(n):
+        arr[i] = output[i]
 
 
-#  Sorted array: [2, 24, 45, 66, 75, 90, 170, 802] 
+def radixSort(arr):
+    # Find the maximum number to know the number of digits
+    max1 = max(arr)
+    exp = 1  # Start with the least significant digit
+    # Continue until we've sorted by the largest digit
+    while max1 // exp > 0:
+        countingSort(arr, exp)  # Sort arr[] for the current digit
+        exp *= 10  # Move to the next digit
 
+
+# Example usage
+if __name__ == "__main__":
+    myArray = [170, 45, 75, 90, 802, 24, 2, 66]  # Example array
+    radixSort(myArray)  # Sort the array
+    print("Sorted array:", myArray)  # Print the sorted array
+    
+    # Sorted array: [2, 24, 45, 66, 75, 90, 170, 802]

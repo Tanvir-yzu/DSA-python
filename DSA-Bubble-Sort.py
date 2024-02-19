@@ -1,32 +1,16 @@
-# an array of integers
-my_array = [2, 7, 3, 9, 12, 11,5]
+# an array of integers to be sorted
+my_array = [2, 7, 3, 9, 12, 11, 5]
 
-# Calculate the length of array
-n = len(my_array)
-
-# Loop through array, starting from second element
-for i in range(n-1):
- # Assume no swapping has occurred in this pass
-    swapped = False
-
-    # Loop through the array, starting from the current element
-    for j in range(n-i-1):
-        # If the current element is greater than the next element
-        if my_array[j] > my_array[j+1]:
-            # Swap the current and next elements
-            my_array[j], my_array[j+1] = my_array[j+1], my_array[j]
-            # Set the swapped flag to True
-            swapped = True
-    
-    # If no swapping occurred in this pass, the array is already sorted
-    if not swapped:
-        break
+# Bubble Sort algorithm
+for i in range(len(my_array)):
+    # Inner loop to compare array elements
+    for j in range(0, len(my_array) - i - 1):
+        # Compare each pair of adjacent elements
+        if my_array[j] > my_array[j + 1]:
+            # Swap them if they are in the wrong order
+            my_array[j], my_array[j + 1] = my_array[j + 1], my_array[j]
 
 # Print the sorted array
 print("Sorted array:", my_array)
 
 # Sorted array: [2, 3, 5, 7, 9, 11, 12]
-
-
-
-

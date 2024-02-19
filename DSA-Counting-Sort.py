@@ -1,43 +1,22 @@
-# This function sorts an array using the counting sort algorithm
 def countingSort(arr):
+    # Initialize a count array with zeros, size based on the maximum value in `arr`
+    count = [0] * (max(arr) + 1)
 
-    # Find the maximum value in the array
-    max_val = max(arr)
-    # Initialize a count array with size equal to max_val + 1
-    # Each index in the count array represents a number in the range of max_val
-    # The value at each index represents the number of occurrences of that number in the input array
-    count = [0] * (max_val + 1)
-
-    # Iterate through the input array and increment the count of each number
-    while len(arr) > 0:
-        num = arr.pop(0)
+    # Increment the count for each number in `arr`
+    for num in arr:
         count[num] += 1
 
-    # Iterate through the count array and add the numbers to the sorted array
-    # The number of times each number is added to the sorted array is equal to its count
-    for i in range(len(count)):
-        while count[i] > 0:
-            arr.append(i)
-            count[i] -= 1
+    # Reconstruct `arr` using the counts stored in `count`
+    index = 0  # Start from the first position of `arr`
+    for i, cnt in enumerate(count):  # `i` is the number, `cnt` is its count
+        for _ in range(cnt):  # Repeat `cnt` times for each number `i`
+            arr[index] = i  # Place `i` in `arr`
+            index += 1  # Move to the next position in `arr`
+    return arr  # Return the sorted array
 
-    # Return the sorted array
-    return arr
-
-
-# Initialize an unsorted array
-unsortedArr = [4, 2, 2, 6, 3, 3, 1, 6, 5, 2, 3]
-
-# Call the counting sort function on the unsorted array
-sortedArr = countingSort(unsortedArr) 
-
-
-
-
-# Print the sorted array
-print("Sorted arrays: ", sortedArr)
-
-
-# Sorted arrays:  [1, 2, 2, 2, 3, 3, 3, 4, 5, 6, 6] 
-
-
+# Example usage
+unsortedArr = [4, 2, 2, 6, 3, 3, 1, 6, 5, 2, 3]  # An unsorted array
+sortedArr = countingSort(unsortedArr)  # Sort the array using counting sort
+print("Sorted array: ", sortedArr)  # Print the sorted array
+#Sorted array:  [1, 2, 2, 2, 3, 3, 3, 4, 5, 6, 6]
 
